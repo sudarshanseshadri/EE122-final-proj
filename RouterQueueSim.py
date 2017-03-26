@@ -9,11 +9,10 @@ class Packet(object):
 
 class PacketStream(object):
 	### constructor for combination of many different streams for different packet sizes
-	### for basic, call: <PacketStream([10], ["geom"], [0.5])> to create a stream with packet size 10 that will produce a packet on each iter with p = 0.5
-	def __init__(self, packetSizeList, distTypeList, distParamsList):
+	### for basic, call: <PacketStream([10], ]0.5])> to create a stream with packet size 10 that will produce a packet on each iter with p = 0.5
+	def __init__(self, packetSizeList, paramsList):
 		self.packetSizeList = packetSizeList
-		self.distTypeList = distTypeList
-		self.distParamsList = distParamsList
+		self.paramsList = paramsList
 
 	### from the internal packet streams, return either a total of 0 or 1 packets.
 	def producePackets(self):
@@ -30,9 +29,10 @@ class Router(object):
 		"""IMPLEMENT ME"""
 
 class Queue(object):
-	def __init__(self, capacity, distType, paramType):
+	def __init__(self, capacity, param):
 		self.capacity = capacity
 		self.buff = []
+		self.param = param
 
 	def push(self, packet):
 		if len(self.buff) + 1 < self.capacity:

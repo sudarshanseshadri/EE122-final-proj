@@ -1,3 +1,6 @@
+###Use python 2.7 please!
+import random
+
 secondsPerIter = 1e-3 #each iteration is 1 ms
 
 class Packet(object):
@@ -16,7 +19,11 @@ class PacketStream(object):
 
 	### from the internal packet streams, return either a total of 0 or 1 packets.
 	def producePackets(self):
-		"""IMPLEMENT ME"""
+		#basic implementation has just one stream
+		if random.random() < self.paramsList[0]:
+			return Packet(self.packetSizeList[0]) 
+		else:
+			return None
 
 class Router(object):
 	### for basic, call: <Router([Queue1, Queue2], [0.5, 0.5])> to have router send to Queue1 and Queue1 with probability 1/2 each (at the start).

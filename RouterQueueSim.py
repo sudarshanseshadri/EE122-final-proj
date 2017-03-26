@@ -76,13 +76,11 @@ class Queue(object):
 
 	#dispatches 0 or 1 packets
 	def dispatch(self):
-		if len(self.buff) == 0:
-			return None
+		if self.size() > 0 and random.random() < self.param:
+			return self.pop()
 		else:
-			if random.random() < self.param:
-				return pop()
-			else
-				return None
+			return None
+			
 #main loop:
 num_iter = 10
 ps = PacketStream([10], [0.6])
